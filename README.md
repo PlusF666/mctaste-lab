@@ -1,3 +1,5 @@
+[▶ 观看产品宣传片（1080p · 50 秒）](docs/mctaste-lab-1080p.mp4)
+
 <div align="center">
 
 # 麦麦偏爱实验室 · McTaste Lab
