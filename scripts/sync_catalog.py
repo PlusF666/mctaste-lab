@@ -23,6 +23,9 @@ def save(path, value):
 def normalize(data, mapping, annotations, context, captured_at):
     """Field paths are confirmed from real response, never invented API fields."""
     rows=pointer(data,mapping['items'])
+    # Official query-meals returns data.meals keyed by product code.
+    # Explicit mappings address /key and /value/... in these wrapper records.
+    if isinstance(rows,dict): rows=[{'key':key,'value':value} for key,value in rows.items()]
     if not isinstance(rows,list): raise ValueError('items 必须指向餐品数组')
     if not isinstance(annotations,dict): raise ValueError('annotations 必须为按餐品 ID 组织的对象')
     for field in ('store_id','store_name','dining_mode'):

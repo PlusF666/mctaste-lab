@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 from decimal import Decimal, InvalidOperation
 import json
 import os
+import re
 from pathlib import Path
 import sys
 from urllib.error import HTTPError, URLError
@@ -64,7 +65,23 @@ class Client:
                     result = json.load(response)
         except HTTPError as exc:
             reason = {401:'Token 无效或已过期',403:'权限不足',429:'限流，请稍后手动重试'}.get(exc.code,'服务请求失败')
-            raise MCPError(f'HTTP {exc.code}：{reason}') from None
+            # Only expose the error message, never headers or the raw response.
+            detail = ''
+            if exc.code == 400:
+                raw = exc.read(8192).decode('utf-8', errors='replace')
+                try:
+                    error = json.loads(raw)
+                    error = error.get('error', error)
+                    detail = error.get('message', '') if isinstance(error, dict) else error
+                except (ValueError, AttributeError):
+                    detail = raw if '<' not in raw else ''
+                if isinstance(detail, str):
+                    detail = detail.replace(self.token, '[REDACTED]')
+                    detail = re.sub(r'(?i)bearer\s+\S+', 'Bearer [REDACTED]', detail)
+                    detail = ' '.join(detail.split())[:240]
+                else:
+                    detail = ''
+            raise MCPError(f'HTTP {exc.code} [{method}]：{reason}' + (f'；{detail}' if detail else '')) from None
         except (URLError, TimeoutError, OSError):
             raise MCPError('网络连接失败或超时；未写入快照，请稍后重试') from None
         if result.get('id') != body['id']:
