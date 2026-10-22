@@ -6,7 +6,9 @@
 
 ## 当前状态
 
-已完成真实 MCP 时间、门店和菜单调用，实际采集并验证 15 个餐品候选的网页导入。代码与脱敏联调记录已准备发布；提交官方 Issue 前需要参赛者确认活动规则和参赛资格，提交后仍须等待官方成功通知，不能把发布项目等同于报名成功。
+已完成真实 MCP 时间、门店和菜单调用，实际采集并验证 15 个餐品候选的网页导入。代码与脱敏联调记录已发布。参赛者已确认资格并同意规则，已提交官方报名 Issue #1065，等待官方成功通知。
+
+报名 Issue：https://github.com/M-China/mcd-developer-innovation-challenge/issues/1065
 
 联调记录：[LIVE_VALIDATION.md](LIVE_VALIDATION.md)。视频观看入口见根目录 README。
 
