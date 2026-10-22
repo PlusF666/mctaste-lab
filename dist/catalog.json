@@ -1,0 +1,163 @@
+{
+  "version": 1,
+  "source": "public-demo",
+  "captured_at": "2026-10-22T05:31:41.761009+00:00",
+  "context": {
+    "store_id": null,
+    "store_name": "官网餐品体验集",
+    "dining_mode": null
+  },
+  "note": "真实餐品名称和图片来自官网，非实时门店可售菜单，价格未提供。",
+  "items": [
+    {
+      "id": "public-big-mac",
+      "name": "巨无霸",
+      "category": "汉堡",
+      "feature": "beef",
+      "image": "assets/big-mac.png",
+      "source_url": "https://www.mcdonalds.com.cn/product/Big-Mac",
+      "caption": "经典双层，熟悉的一口",
+      "price_fen": null
+    },
+    {
+      "id": "public-double-cheeseburger",
+      "name": "双层吉士汉堡",
+      "category": "汉堡",
+      "feature": "beef",
+      "image": "assets/double-cheeseburger.png",
+      "source_url": "https://www.mcdonalds.com.cn/product/Double-Cheeseburger",
+      "caption": "吉士加倍，牛肉加倍",
+      "price_fen": null
+    },
+    {
+      "id": "public-spicy-chicken-filet",
+      "name": "麦辣鸡腿汉堡",
+      "category": "汉堡",
+      "feature": "chicken",
+      "image": "assets/spicy-chicken-filet.png",
+      "source_url": "https://www.mcdonalds.com.cn/product/Spicy-Chicken-Filet",
+      "caption": "今天想选麦辣鸡腿",
+      "price_fen": null
+    },
+    {
+      "id": "public-grilled-chicken-sandwich",
+      "name": "板烧鸡腿堡",
+      "category": "汉堡",
+      "feature": "chicken",
+      "image": "assets/grilled-chicken-sandwich.png",
+      "source_url": "https://www.mcdonalds.com.cn/product/Grilled-Chicken-Sandwich",
+      "caption": "换一口板烧风味",
+      "price_fen": null
+    },
+    {
+      "id": "public-filet-o-fish",
+      "name": "麦香鱼",
+      "category": "汉堡",
+      "feature": "fish",
+      "image": "assets/filet-o-fish.png",
+      "source_url": "https://www.mcdonalds.com.cn/product/Filet-O-Fish",
+      "caption": "鱼堡也是你的选择",
+      "price_fen": null
+    },
+    {
+      "id": "public-double-fof",
+      "name": "双层深海鳕鱼堡",
+      "category": "汉堡",
+      "feature": "fish",
+      "image": "assets/double-fof.png",
+      "source_url": "https://www.mcdonalds.com.cn/product/double-fof",
+      "caption": "把鱼堡的快乐加一层",
+      "price_fen": null
+    },
+    {
+      "id": "public-french-fries",
+      "name": "薯条",
+      "category": "小食",
+      "feature": "snack",
+      "image": "assets/french-fries.png",
+      "source_url": "https://www.mcdonalds.com.cn/product/French-Fries",
+      "caption": "给薯条留个位置",
+      "price_fen": null
+    },
+    {
+      "id": "public-chicken-mcnuggets",
+      "name": "麦乐鸡 (5块)",
+      "category": "小食",
+      "feature": "snack",
+      "image": "assets/chicken-mcnuggets.png",
+      "source_url": "https://www.mcdonalds.com.cn/product/Chicken-McNuggets",
+      "caption": "小块快乐，慢慢选",
+      "price_fen": null
+    },
+    {
+      "id": "public-corn-cup",
+      "name": "玉米杯",
+      "category": "小食",
+      "feature": "snack",
+      "image": "assets/corn-cup.png",
+      "source_url": "https://www.mcdonalds.com.cn/product/Corn-Cup",
+      "caption": "也给玉米杯一个机会",
+      "price_fen": null
+    },
+    {
+      "id": "public-oreo-mcflurry",
+      "name": "奥利奥麦旋风",
+      "category": "甜品",
+      "feature": "dessert",
+      "image": "assets/oreo-mcflurry.png",
+      "source_url": "https://www.mcdonalds.com.cn/product/Oreo-Mcflurry",
+      "caption": "这一口想留给麦旋风",
+      "price_fen": null
+    },
+    {
+      "id": "public-cone",
+      "name": "圆筒冰淇淋",
+      "category": "甜品",
+      "feature": "dessert",
+      "image": "assets/cone.png",
+      "source_url": "https://www.mcdonalds.com.cn/product/Cone",
+      "caption": "简单的圆筒快乐",
+      "price_fen": null
+    },
+    {
+      "id": "public-taro-pie",
+      "name": "香芋派",
+      "category": "甜品",
+      "feature": "dessert",
+      "image": "assets/taro-pie.png",
+      "source_url": "https://www.mcdonalds.com.cn/product/Taro-Pie",
+      "caption": "给香芋派一个心动位",
+      "price_fen": null
+    },
+    {
+      "id": "public-coca-cola",
+      "name": "可口可乐",
+      "category": "饮品",
+      "feature": "drink",
+      "image": "assets/coca-cola.png",
+      "source_url": "https://www.mcdonalds.com.cn/product/Coca-Cola",
+      "caption": "来一杯熟悉的气泡",
+      "price_fen": null
+    },
+    {
+      "id": "public-fuze-tea",
+      "name": "阳光柠檬红茶",
+      "category": "饮品",
+      "feature": "drink",
+      "image": "assets/fuze-tea.png",
+      "source_url": "https://www.mcdonalds.com.cn/product/Fuze-Tea",
+      "caption": "或许你想选柠檬红茶",
+      "price_fen": null
+    },
+    {
+      "id": "public-sprite",
+      "name": "雪碧",
+      "category": "饮品",
+      "feature": "drink",
+      "image": "assets/sprite.png",
+      "source_url": "https://www.mcdonalds.com.cn/product/Sprite",
+      "caption": "清爽选择，交给你决定",
+      "price_fen": null
+    }
+  ]
+}
