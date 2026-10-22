@@ -1,4 +1,4 @@
-[▶ 观看产品宣传片（1080p · 50 秒）](docs/mctaste-lab-1080p.mp4)
+[▶ 观看产品宣传片（1080p · 50 秒）](https://plusf666.github.io/mctaste-lab/docs/mctaste-lab-1080p.mp4)
 
 <div align="center">
 
