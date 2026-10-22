@@ -3,6 +3,7 @@ import sys
 import unittest
 from unittest.mock import patch
 import io
+from urllib.error import HTTPError
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from sync_catalog import normalize
 from mcp_client import Client,MCPError,payload,pointer
@@ -19,6 +20,13 @@ class SyncTests(unittest.TestCase):
 
     def test_only_real_response_items_selected(self):
         c=self.result();self.assertEqual([x['id'] for x in c['items']],['a','b']);self.assertEqual(c['items'][0]['name'],'实际返回 A')
+
+    def test_official_product_map_preserves_actual_codes(self):
+        self.data={'data':{'meals':{'a':{'name':'实际返回 A'},'b':{'name':'实际返回 B'}}}}
+        self.mapping={'items':'/data/meals','id':'/key','name':'/value/name'}
+        c=self.result()
+        self.assertEqual([x['id'] for x in c['items']],['a','b'])
+        self.assertEqual(c['provenance']['observed_count'],2)
 
     def test_unobserved_annotations_do_not_fabricate_food(self):
         self.annotations['fake']={'feature':'snack'};c=self.result();self.assertEqual(len(c['items']),2);self.assertEqual(c['provenance']['absent_annotation_count'],1)
@@ -64,6 +72,16 @@ class SyncTests(unittest.TestCase):
     def test_sse_waits_for_matching_result(self):
         r=io.BytesIO(b'data: {"method":"notifications/progress"}\n\ndata: {"id":1,"result":{"ok":true}}\n\n');r.headers={'Content-Type':'text/event-stream'}
         with patch('mcp_client.urlopen',return_value=r): self.assertEqual(Client('test-only-placeholder').rpc('tools/list',{}),{'ok':True})
+
+    def test_http_400_identifies_stage_without_exposing_token(self):
+        response = io.BytesIO(b'{"error":{"message":"Unsupported protocol: test-only-placeholder"}}')
+        error = HTTPError('https://mcp.mcd.cn',400,'Bad Request',{},response)
+        with patch('mcp_client.urlopen',side_effect=error):
+            with self.assertRaises(MCPError) as caught:
+                Client('test-only-placeholder').rpc('initialize',{})
+        self.assertIn('[initialize]',str(caught.exception))
+        self.assertIn('Unsupported protocol',str(caught.exception))
+        self.assertNotIn('test-only-placeholder',str(caught.exception))
 
 
 if __name__=='__main__': unittest.main()
