@@ -2,7 +2,7 @@
 
 ## 状态
 
-已实现只读 MCP 客户端、实时 schema 发现、菜单采集、显式字段映射、候选规范化和 Skill 调用流程。**本次发布尚未配置有效 Token，真实官方工具调用为 0 次。** 公开网页使用官网真实餐品的 `public-demo` 体验集；这不等同于持 Token 的 MCP 集成验证。真实调用是赛事要求，完成联调前不提交正式报名，不伪造成功记录。
+已实现只读 MCP 客户端、实时 schema 发现、菜单采集、显式字段映射、候选规范化和 Skill 调用流程。**2026-10-22 已在本机完成真实连接，以及时间、门店和菜单查询验证。** 记录见 [LIVE_VALIDATION.md](docs/LIVE_VALIDATION.md)。 公开网页使用官网真实餐品的 `public-demo` 体验集；这不等同于持 Token 的 MCP 集成验证。真实菜单通过本机采集与网页导入使用，公开首页不会直接持有凭据查询 MCP。
 
 ## Server 与 Tool
 
@@ -10,10 +10,10 @@ Server：`https://mcp.mcd.cn`；Streamable HTTP；认证 Header 仅使用环境�
 
 | 工具 | 用途 | 当前验证 |
 | --- | --- | --- |
-| `query-nearby-stores` | 查询并由用户确认门店 | 代码白名单支持；待真实联调 |
-| `query-meals` | 本项目核心，提供实际餐品候选 | 采集器已实现；待真实联调 |
-| `query-meal-detail` | 核对含糊的类别与具体餐品 | 代码白名单支持；待真实联调 |
-| `now-time-info` | 辅助确认时间 | 代码白名单支持；待真实联调 |
+| `query-nearby-stores` | 查询并由用户确认门店 | 真实调用成功（2026-10-22） |
+| `query-meals` | 本项目核心，提供实际餐品候选 | 真实查询与采集成功（2026-10-22） |
+| `query-meal-detail` | 核对含糊的类别与具体餐品 | 代码白名单支持；尚未实际调用 |
+| `now-time-info` | 辅助确认时间 | 真实调用成功（2026-10-22） |
 
 工具名依据[官方 MCP 指南](https://github.com/M-China/mcd-mcp-server)。工具参数与返回字段以实际连接后的 `tools/list` 为准，本项目没有冒充已知官方业务字段。客户端支持初始化、JSON/SSE 响应、会话 Header 与工具列表游标；不宣称支持所有 MCP 扩展或业务菜单分页。
 
@@ -32,6 +32,10 @@ flowchart LR
 解决“用户不知道怎么描述想吃什么”的问题：通过实际餐品选择表达意图，保留可解释证据，再把相近偏好与探索候选分开。菜单来源决定候选，用户选择决定偏好，确定性引擎负责计算。没有把普通分类打分包装成科学人格或医学测评。
 
 ## 本机接入
+
+Windows 可双击根目录的 `配置麦当劳MCP.cmd`，在本机隐藏输入框粘贴官方 Token。脚本通过 Windows DPAPI 将凭据加密保存到已被 Git 忽略的 `.local/mcp-token.xml`，只供当前 Windows 用户在当前电脑解密，然后验证连接；即使验证失败也保留加密凭据，便于排查时重试。工具 schema 仅在连接成功后保存在 `.local/tools.json`。这两个文件不要上传。
+
+之后可使用 在 PowerShell 中运行 `& ./scripts/connect_mcp.ps1 -CollectorArguments @('discover','--out','.local/tools.json')`，或将后面的参数换成以下 `raw` / `collect` 命令的参数。脚本只在子进程调用期间设置 Token，结束后恢复原会话环境变量。删除 `.local/mcp-token.xml` 可移除本地保存的凭据；在官方平台撤销 Token 才会使服务端凭据失效。
 
 需要 Python 3.10+，无第三方运行依赖。由本人在[官方平台](https://open.mcd.cn/mcp)登录并申请 Token，不要把凭据发进聊天或仓库。PowerShell 可在当前会话安全输入：
 
@@ -74,4 +78,4 @@ Token 和会话 ID 不写入规范化菜单；浏览器不接收 Token、不直�
 
 不读取账号订单、地址簿、优惠券或积分。不领券、下单、支付、抽奖；不调用 `calculate-price`，不声称完成支付核价。官网公开菜单和图片不代表某店此刻可售。偏好标签不能用于过敏、营养或健康判断。
 
-本地网络协议测试使用 mock，成功不等于官方实测。真实联调后在 `docs/LIVE_VALIDATION.md` 记录时间、实际成功工具、候选条数、映射依据和未支持项，且据实更新网页说明及 README。公开材料仅保留脱敏摘要。
+本地网络协议测试使用 mock，成功不等于官方实测。已在 `docs/LIVE_VALIDATION.md` 记录本次真实联调时间、实际成功工具、候选条数、映射依据和未支持项；后续联调应继续据实更新。公开材料仅保留脱敏摘要。

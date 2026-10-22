@@ -14,7 +14,7 @@
 
 ![麦麦偏爱实验室的红黄品牌风格界面](docs/preview-desktop.png)
 
-> 独立参赛作品，非麦当劳官方产品。公开体验集使用来自官网的真实餐品名称与图片，**不是实时门店可售菜单**。本版本的 MCP 采集代码已实现，但尚未配置 Token 完成真实官方联调，尚未报名。参赛前须完成真实调用，详情见 [MCP_INTEGRATION.md](MCP_INTEGRATION.md)。
+> 独立参赛作品，非麦当劳官方产品。公开体验集使用来自官网的真实餐品名称与图片，**不是实时门店可售菜单**。本机已完成 MCP 时间、门店与菜单真实查询和网页导入验证，见 [联调记录](docs/LIVE_VALIDATION.md)。公开首页默认仍为官网体验集，报名结果以官方 Issue 回复为准，详情见 [MCP_INTEGRATION.md](MCP_INTEGRATION.md)。
 
 ## 为什么做这个
 
@@ -89,7 +89,7 @@ node tests/engine.test.mjs
 python -m unittest discover -s tests -p test_*.py
 ```
 
-当前 22 项算法测试与 12 项采集/协议测试通过。网页和 CLI 共用 `dist/engine.mjs`，没有另写一份演示算法。浏览器验收记录见 [docs/VALIDATION.md](docs/VALIDATION.md)。
+当前 22 项算法测试与 14 项采集/协议测试通过。网页和 CLI 共用 `dist/engine.mjs`，没有另写一份演示算法。浏览器验收记录见 [docs/VALIDATION.md](docs/VALIDATION.md)。
 
 Token 不进入浏览器。选择默认只留在当前页面；主动点击“保存在这台设备”后才写本项目的 localStorage 键，清除时不影响其他项目。导出完整 JSON 会包含本次菜单与选择，分享前请自行检查；SVG 偏好卡不包含门店、账号或历史原文。
 
@@ -111,4 +111,4 @@ docs/                     素材来源、截图、验收与报名草稿
 
 已核对公开报名列表存在同类二选一推荐，因此本项目不宣称概念绝对唯一。本实现重点是用户可编辑的类别证据、单品与类别的区分、可恢复实验记录和两条推荐路线；没有复制其他参赛者代码或页面。
 
-发布到 GitHub 与正式报名是不同步骤。真实 MCP 联调完成后，再依据 [docs/SUBMISSION.md](docs/SUBMISSION.md) 提交报名。
+发布到 GitHub 与正式报名是不同步骤。报名材料见 [docs/SUBMISSION.md](docs/SUBMISSION.md)；最终报名结果以官方 Issue 回复为准。
