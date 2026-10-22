@@ -1,0 +1,6 @@
+.local/
+.env
+__pycache__/
+*.pyc
+node_modules/
+.openai/site-workflow-state.json

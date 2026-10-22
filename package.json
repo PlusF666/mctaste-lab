@@ -1,0 +1,9 @@
+{
+  "name": "mctaste-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "麦麦偏爱实验室：可解释、可调整的麦当劳二选一偏好实验",
+  "scripts": {"start":"python scripts/serve.py", "test":"node tests/engine.test.mjs", "demo":"node scripts/demo.mjs"},
+  "license": "MIT"
+}
