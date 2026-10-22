@@ -107,7 +107,7 @@ docs/                     素材来源、截图、验收与报名草稿
 
 ## 参赛与权利说明
 
-开发使用 Codex，未使用 WorkBuddy，不伪造 `workbuddy.md`。官方 `CONTEST_DECLARATION.md` 原样保留。原创代码与布局采用 MIT；官方标志、餐品图及商标不在本项目 MIT 授权范围内，权利仍归原权利人，来源见 [docs/ASSETS.md](docs/ASSETS.md)。
+官方 `CONTEST_DECLARATION.md` 原样保留。原创代码与布局采用 MIT；官方标志、餐品图及商标不在本项目 MIT 授权范围内，权利仍归原权利人，来源见 [docs/ASSETS.md](docs/ASSETS.md)。
 
 已核对公开报名列表存在同类二选一推荐，因此本项目不宣称概念绝对唯一。本实现重点是用户可编辑的类别证据、单品与类别的区分、可恢复实验记录和两条推荐路线；没有复制其他参赛者代码或页面。
 
